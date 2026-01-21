@@ -1,1 +1,40 @@
 @import 'tailwindcss';
+
+@theme {
+	/* light-mode colours */
+	--color-text: hsl(150 33% 6%);
+	--color-background: hsl(150 37% 97%);
+	--color-primary: hsl(147 32% 88%);
+	--color-secondary: hsl(189 35% 67%);
+	--color-accent: hsl(200 35% 42%);
+
+	/* dark-mode colours */
+	--color-text-dark: hsl(150 33% 94%);
+	--color-background-dark: hsl(144 38% 3%);
+	--color-primary-dark: hsl(147 33% 12%);
+	--color-secondary-dark: hsl(189 35% 33%);
+	--color-accent-dark: hsl(200 35% 58%);
+
+	/* typography */
+	--font-size-sm: 0.75rem; /* 12px */
+	--font-size-base: 1rem; /* 16px */
+	--font-size-xl: 1.333rem; /* ~21px */
+	--font-size-2xl: 1.777rem; /* ~28px */
+	--font-size-3xl: 2.369rem; /* ~38px */
+	--font-size-4xl: 3.158rem; /* ~51px */
+	--font-size-5xl: 4.21rem; /* ~67px */
+
+	--font-family-heading: 'Space Grotesk', sans-serif;
+	--font-family-body: 'Cairo', sans-serif;
+
+	--font-weight-normal: 400;
+	--font-weight-bold: 700;
+}
+
+.dark {
+	--color-text: var(--color-text-dark);
+	--color-background: var(--color-background-dark);
+	--color-primary: var(--color-primary-dark);
+	--color-secondary: var(--color-secondary-dark);
+	--color-accent: var(--color-accent-dark);
+}

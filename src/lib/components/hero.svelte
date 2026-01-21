@@ -1,30 +1,31 @@
 <script lang="ts">
 	import { ArrowBigDown } from '@lucide/svelte';
+	import { Button } from '$lib/components/ui/button/index.js';
 </script>
 
 <main class="flex h-svh flex-col items-center justify-between px-28 py-48">
 	<div>
-		<h1 class="pb-2 font-family-heading text-5xl font-bold text-text">Mohammad Al-aqua</h1>
-		<p class="font-family-body text-2xl text-text">Teacher by day, coder by night.</p>
-		<p class="font-family-body text-2xl text-text">
+		<h1 class="text-text pb-2 font-family-heading text-5xl font-bold">Mohammad Al-aqua</h1>
+		<p class="text-text font-family-body text-2xl">Teacher by day, coder by night.</p>
+		<p class="text-text font-family-body text-2xl">
 			I craft full-stack solutions that are as easy to maintain as they are to explain.
 		</p>
 		<div class="mt-6 flex gap-4">
-			<a
+			<Button
 				href="/"
-				class="rounded bg-primary px-4 py-2 text-text transition-all hover:-translate-y-0.5 hover:bg-gray-500/20 active:scale-98"
-				>Get in touch</a
+				class="text-text text-md transition-all hover:-translate-y-0.5 active:scale-98"
+				variant="default">Get in touch</Button
 			>
-			<a
+			<Button
 				href="/"
-				class="rounded bg-secondary px-4 py-2 text-text shadow transition-all hover:-translate-y-0.5 hover:bg-gray-500/20 active:scale-98"
-				>Read my blog</a
+				class="text-text text-md transition-all hover:-translate-y-0.5 active:scale-98"
+				variant="secondary">Read my blog</Button
 			>
 		</div>
 	</div>
 
 	<div
-		class="rounded-full bg-primary p-4 shadow transition-all hover:-translate-y-1 active:scale-95"
+		class="scroll-indicator rounded-full bg-primary p-4 shadow transition-all hover:-translate-y-1 active:scale-95"
 	>
 		<ArrowBigDown class="go-down-animation text-text" />
 	</div>
@@ -49,7 +50,7 @@
 	:global(.go-down-animation) {
 		animation: bounce-down 1.5s ease-in-out infinite;
 	}
-	:global(.go-down-animation:hover) {
+	:global(.scroll-indicator:hover .go-down-animation) {
 		animation-play-state: paused;
 	}
 </style>

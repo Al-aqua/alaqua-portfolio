@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { ArrowBigDown } from '@lucide/svelte';
 	import { Button } from '$lib/components/ui/button/index.js';
+
+	function scrollDown() {
+		window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+	}
 </script>
 
 <main class="flex h-svh flex-col items-center justify-between px-28 py-48">
@@ -24,11 +28,12 @@
 		</div>
 	</div>
 
-	<div
+	<button
 		class="scroll-indicator rounded-full bg-primary p-4 shadow transition-all hover:-translate-y-1 active:scale-95"
+		onclick={scrollDown}
 	>
 		<ArrowBigDown class="go-down-animation text-text" />
-	</div>
+	</button>
 </main>
 
 <style>

@@ -11,7 +11,8 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"start": "bun run build/index.js"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",
@@ -32,6 +33,7 @@
 		"prettier-plugin-svelte": "^3.4.0",
 		"prettier-plugin-tailwindcss": "^0.7.2",
 		"svelte": "^5.45.6",
+		"svelte-adapter-bun": "^1.0.1",
 		"svelte-check": "^4.3.4",
 		"tailwind-merge": "^3.4.0",
 		"tailwind-variants": "^3.2.2",

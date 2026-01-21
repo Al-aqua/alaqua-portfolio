@@ -23,24 +23,33 @@
 		</div>
 	</div>
 
-	<div class="rounded-full bg-primary p-4 shadow">
+	<div
+		class="rounded-full bg-primary p-4 shadow transition-all hover:-translate-y-1 active:scale-95"
+	>
 		<ArrowBigDown class="go-down-animation text-text" />
 	</div>
 </main>
 
 <style>
-	@keyframes float {
+	@keyframes bounce-down {
 		0%,
+		20%,
+		50%,
+		80%,
 		100% {
 			transform: translateY(0);
-			opacity: 1;
 		}
-		50% {
-			transform: translateY(8px);
-			opacity: 0.7;
+		40% {
+			transform: translateY(-10px);
+		}
+		60% {
+			transform: translateY(-5px);
 		}
 	}
 	:global(.go-down-animation) {
-		animation: float 2s ease-in-out infinite;
+		animation: bounce-down 1.5s ease-in-out infinite;
+	}
+	:global(.go-down-animation:hover) {
+		animation-play-state: paused;
 	}
 </style>

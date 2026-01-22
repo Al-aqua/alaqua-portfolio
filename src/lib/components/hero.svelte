@@ -3,7 +3,10 @@
 	import ScrollButton from './scrollButton.svelte';
 </script>
 
-<main class="flex h-svh flex-col items-center justify-between px-16 py-28 md:px-28 md:py-48">
+<section
+	class="flex min-h-svh flex-col items-center justify-between px-16 py-28 md:px-28 md:py-48"
+	aria-label="Hero section"
+>
 	<div>
 		<h1 class="text-text pb-2 font-family-heading text-5xl font-bold">Mohammad Al-aqua</h1>
 		<p class="text-text font-family-body text-2xl">Teacher by day, coder by night.</p>
@@ -25,4 +28,4 @@
 	</div>
 
 	<ScrollButton />
-</main>
+</section>

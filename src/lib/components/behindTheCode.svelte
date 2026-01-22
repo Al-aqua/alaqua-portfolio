@@ -2,7 +2,7 @@
 	import ScrollButton from './scrollButton.svelte';
 </script>
 
-<section class="flex h-svh flex-col justify-between px-16 py-28 lg:px-28 lg:py-48">
+<section class="flex h-svh flex-col justify-between px-8 py-28 md:px-16 lg:px-28 lg:py-48">
 	<div class="max-w-5xl">
 		<h2 class="text-text pb-2 font-family-heading text-3xl font-bold sm:text-4xl md:text-5xl">
 			Behind the Code

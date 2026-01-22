@@ -17,12 +17,12 @@
 		<div class="mt-6 flex gap-4">
 			<Button
 				href="/"
-				class="text-text text-md transition-all hover:-translate-y-0.5 active:scale-98"
+				class="text-text text-md font-family-body transition-all hover:-translate-y-0.5 active:scale-98"
 				variant="default">Get in touch</Button
 			>
 			<Button
 				href="/"
-				class="text-text text-md transition-all hover:-translate-y-0.5 active:scale-98"
+				class="text-text text-md font-family-body transition-all hover:-translate-y-0.5 active:scale-98"
 				variant="secondary">Read my blog</Button
 			>
 		</div>

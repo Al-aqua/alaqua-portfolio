@@ -1,6 +1,7 @@
 <script lang="ts">
 	import ThemeToggle from './theme_toggle.svelte';
 	import { Button } from '$lib/components/ui/button/index.js';
+	import { Terminal } from '@lucide/svelte';
 </script>
 
 <nav class="fixed h-16 w-full bg-background">
@@ -14,7 +15,7 @@
 					role="link"
 					aria-label="Home - Al-aqua portfolio"
 				>
-					Al-aqua
+					<Terminal /> Al-aqua
 				</Button>
 			</li>
 			<li>

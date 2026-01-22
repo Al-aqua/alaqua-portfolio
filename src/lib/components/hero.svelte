@@ -6,6 +6,7 @@
 <section
 	class="flex min-h-svh flex-col items-center justify-between px-16 py-28 md:px-28 md:py-48"
 	aria-label="Hero section"
+	role="banner"
 >
 	<div>
 		<h1 class="text-text pb-2 font-family-heading text-5xl font-bold">Mohammad Al-aqua</h1>

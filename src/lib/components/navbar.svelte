@@ -5,24 +5,30 @@
 
 <nav class="fixed h-16 w-full bg-background">
 	<div class="flex h-full w-full items-center justify-around">
-		<div class="flex gap-8 md:gap-28">
-			<Button
-				href="/"
-				class="text-text text-md font-family-heading transition-all hover:-translate-y-0.5 active:scale-98"
-				variant="ghost"
-			>
-				Al-aqua
-			</Button>
-			<div>
+		<ul class="flex gap-8 md:gap-28">
+			<li>
+				<Button
+					href="/"
+					class="text-text text-md font-family-heading transition-all hover:-translate-y-0.5 active:scale-98"
+					variant="ghost"
+					role="link"
+					aria-label="Home - Al-aqua portfolio"
+				>
+					Al-aqua
+				</Button>
+			</li>
+			<li>
 				<Button
 					href="#behind-the-code"
 					class="text-text text-md font-family-heading transition-all hover:-translate-y-0.5 active:scale-98"
 					variant="ghost"
+					role="link"
+					aria-label="Behind the Code section"
 				>
 					Behind the Code
 				</Button>
-			</div>
-		</div>
+			</li>
+		</ul>
 		<div></div>
 		<div>
 			<ThemeToggle />

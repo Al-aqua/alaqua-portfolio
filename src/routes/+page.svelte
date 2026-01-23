@@ -10,6 +10,8 @@
 </svelte:head>
 
 <Navbar />
-<Hero />
-<BehindTheCode />
+<main>
+	<Hero />
+	<BehindTheCode />
+</main>
 <UnderConstruction />

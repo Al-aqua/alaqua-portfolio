@@ -21,7 +21,7 @@
 				variant="default">Get in touch</Button
 			>
 			<Button
-				href="/"
+				href="/blog"
 				class="text-md transition-all hover:-translate-y-0.5 active:scale-98"
 				variant="secondary">Read my blog</Button
 			>

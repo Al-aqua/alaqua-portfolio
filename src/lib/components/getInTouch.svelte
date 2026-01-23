@@ -62,6 +62,6 @@
 	</div>
 
 	<div class="flex w-full flex-col items-center">
-		<ScrollButton />
+		<ScrollButton link="#under-construction" />
 	</div>
 </section>

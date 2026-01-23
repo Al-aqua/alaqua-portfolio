@@ -26,6 +26,6 @@
 	</div>
 
 	<div class="flex w-full flex-col items-center">
-		<ScrollButton />
+		<ScrollButton link="#get-in-touch" />
 	</div>
 </section>

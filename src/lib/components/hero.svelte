@@ -16,7 +16,7 @@
 		</p>
 		<div class="mt-6 flex gap-4">
 			<Button
-				href="/"
+				href="#get-in-touch"
 				class="text-md transition-all hover:-translate-y-0.5 active:scale-98"
 				variant="default">Get in touch</Button
 			>
@@ -28,5 +28,5 @@
 		</div>
 	</div>
 
-	<ScrollButton />
+	<ScrollButton link="#behind-the-code" />
 </section>

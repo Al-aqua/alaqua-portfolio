@@ -10,7 +10,7 @@
 			<li>
 				<Button
 					href="/"
-					class="text-text text-md font-family-heading transition-all hover:-translate-y-0.5 active:scale-98"
+					class="text-md font-family-heading transition-all hover:-translate-y-0.5 active:scale-98"
 					variant="ghost"
 					role="link"
 					aria-label="Home - Al-aqua portfolio"
@@ -21,7 +21,7 @@
 			<li>
 				<Button
 					href="#behind-the-code"
-					class="text-text text-md font-family-heading transition-all hover:-translate-y-0.5 active:scale-98"
+					class="text-md font-family-heading transition-all hover:-translate-y-0.5 active:scale-98"
 					variant="ghost"
 					role="link"
 					aria-label="Behind the Code section"

@@ -8,10 +8,11 @@
 
 <button
 	aria-label="Scroll to next section"
-	class="scroll-indicator rounded-full bg-primary p-4 shadow transition-all hover:-translate-y-1 active:scale-95"
+	class="scroll-indicator rounded-full bg-accent p-4 shadow transition-all hover:-translate-y-1 active:scale-95"
 	onclick={scrollDown}
 >
-	<ArrowBigDown class="go-down-animation text-text" />
+	<ArrowBigDown class="go-down-animation text-accent-foreground" />
+	<span class="sr-only">Scroll to the next section</span>
 </button>
 
 <style>

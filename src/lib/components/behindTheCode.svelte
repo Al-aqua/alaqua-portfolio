@@ -7,10 +7,8 @@
 	class="flex h-svh flex-col justify-between px-8 py-28 md:px-16 lg:px-28 lg:py-48"
 >
 	<div class="max-w-5xl">
-		<h2 class="text-text pb-2 font-family-heading text-3xl font-bold sm:text-4xl md:text-5xl">
-			Behind the Code
-		</h2>
-		<p class="text-text font-family-body text-lg sm:text-xl md:text-2xl">
+		<h2 class="pb-2 text-3xl font-bold sm:text-4xl md:text-5xl">Behind the Code</h2>
+		<p class="text-lg sm:text-xl md:text-2xl">
 			Yemeni-born, 26, splitting life between lecture halls and production servers. With 3+ years of
 			experience, I build full-stack apps using
 			<span class="font-bold text-[#F05340]">Laravel</span> /

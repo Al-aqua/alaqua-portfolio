@@ -12,7 +12,7 @@
 			Yemeni-born, 26, splitting life between lecture halls and production servers. With 3+ years of
 			experience, I build full-stack apps using
 			<span class="font-bold text-[#F05340]">Laravel</span> /
-			<span class="font-bold text-[#064B35]">Django</span> on the backend and
+			<span class="font-bold text-[#3C873A]">Node.js</span> on the backend and
 			<span class="font-bold text-[#61DBFB]">React</span> /
 			<span class="font-bold text-[#FF3E00]">Svelte</span> /
 			<span class="font-bold text-[#44D1FD]">Flutter</span>

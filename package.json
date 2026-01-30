@@ -6,7 +6,6 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"postbuild": "bunx svelte-sitemap --domain https://alaqua.dev --ignore '**/admin/**'",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -37,7 +36,6 @@
 		"svelte-adapter-bun": "^1.0.1",
 		"svelte-check": "^4.3.4",
 		"svelte-seo": "^2.0.0",
-		"svelte-sitemap": "^2.7.1",
 		"tailwind-merge": "^3.4.0",
 		"tailwind-variants": "^3.2.2",
 		"tailwindcss": "^4.1.17",

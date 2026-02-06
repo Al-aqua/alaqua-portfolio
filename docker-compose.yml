@@ -32,6 +32,8 @@ services:
       context: .
       dockerfile: nginx.Dockerfile
     restart: unless-stopped
+    labels:
+      - coolify.traefik.middlewares=crowdsec@file
     volumes:
       - nginx-cache:/var/cache/nginx
     environment:

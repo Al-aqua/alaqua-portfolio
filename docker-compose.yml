@@ -3,7 +3,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        BUN_VERSION: '1.3.5'
     restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - ORIGIN=${SERVICE_FQDN_APP:-http://localhost:3000}
+      - PUBLIC_OPENPANEL_CLIENT_ID=${PUBLIC_OPENPANEL_CLIENT_ID}
     expose:
       - '3000'
     healthcheck:
@@ -12,30 +18,34 @@ services:
           'CMD',
           'bun',
           '-e',
-          "fetch('http://localhost:3000').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"
+          "fetch('http://localhost:3000/health').then(r => r.ok ? process.exit(0) : process.exit(1)).catch(() => process.exit(1))"
         ]
       interval: 30s
-      timeout: 5s
+      timeout: 10s
       retries: 3
+      start_period: 10s
     networks:
-      - internal
+      - default
 
   nginx:
     image: nginx:alpine
     restart: unless-stopped
-    ports:
-      - '80:80'
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - nginx-cache:/var/cache/nginx
+    environment:
+      - NGINX_ENTRYPOINT_QUIET_LOGS=1
+    expose:
+      - '80'
+    networks:
+      - default
     depends_on:
       app:
         condition: service_healthy
-    labels:
-      - coolify.traefik.middlewares=crowdsec@file
-      - coolify.exposed=true
-    networks:
-      - internal
+
+volumes:
+  nginx-cache:
 
 networks:
-  internal:
+  default:
     driver: bridge

@@ -38,6 +38,12 @@ services:
       - NGINX_ENTRYPOINT_QUIET_LOGS=1
     expose:
       - '80'
+    healthcheck:
+      test: ['CMD-SHELL', 'nginx -t && curl -sf http://localhost/health > /dev/null || exit 1']
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
     networks:
       - default
     depends_on:

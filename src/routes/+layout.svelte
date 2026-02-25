@@ -5,6 +5,8 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import { ModeWatcher } from 'mode-watcher';
 	import SvelteSeo from 'svelte-seo';
+	import { cn } from '$lib/utils';
+	import GridPattern from '$lib/components/GridPattern.svelte';
 
 	let { children } = $props();
 </script>
@@ -61,7 +63,13 @@
 
 <ModeWatcher />
 
-{@render children()}
+<div class="relative min-h-screen w-full">
+	<GridPattern
+		class={cn('bg-foreground,transparent)]', 'inset-x-0 inset-y-[-30%] h-[200%] skew-y-12')}
+		fillColor="rgb(156 163 175 / 0.15)"
+	/>
+	{@render children()}
+</div>
 <div style="display:none">
 	{#each locales as locale (locale)}
 		<a href={localizeHref(page.url.pathname, { locale })}>

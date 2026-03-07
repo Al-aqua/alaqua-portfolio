@@ -17,6 +17,8 @@ RUN bun run build
 # Production stage
 FROM oven/bun:${BUN_VERSION}-slim AS runner
 
+RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 COPY --from=builder /app/build ./build
@@ -31,6 +33,6 @@ USER bun
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD bun -e "fetch('http://localhost:3000/health').then(r => r.ok ? process.exit(0) : process.exit(1)).catch(() => process.exit(1))" || exit 1
+  CMD curl -f http://localhost:3000/health || exit 1
 
 CMD ["bun", "run", "./build/index.js"]

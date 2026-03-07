@@ -65,7 +65,7 @@
 
 <div class="relative min-h-screen w-full">
 	<GridPattern
-		class={cn('bg-foreground,transparent)]', 'inset-x-0 inset-y-[-30%] h-[200%] skew-y-12')}
+		class={cn('bg-foreground,transparent)]', 'inset-x-0 inset-y-[-30%] skew-y-12')}
 		fillColor="rgb(156 163 175 / 0.15)"
 	/>
 	{@render children()}

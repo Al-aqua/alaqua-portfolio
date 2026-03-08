@@ -4,7 +4,7 @@
 	import { Terminal } from '@lucide/svelte';
 </script>
 
-<nav class="fixed h-16 w-full bg-background">
+<nav class="fixed z-50 h-16 w-full bg-background">
 	<div class="flex h-full w-full items-center justify-around">
 		<ul class="flex gap-8 md:gap-28">
 			<li>

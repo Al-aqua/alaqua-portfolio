@@ -5,7 +5,7 @@
 	import { slide } from 'svelte/transition';
 	import type { NavItem } from '$lib/types';
 	interface props {
-		links: NavItem[];
+		links?: NavItem[];
 	}
 	let { links }: props = $props();
 
@@ -16,15 +16,17 @@
 	<div class="flex h-full w-full items-center justify-between p-4 md:justify-around">
 		<ul class="flex gap-8 md:gap-28">
 			<div class="flex items-center gap-2">
-				<li class="md:hidden">
-					<Button variant="ghost" size="icon" onclick={() => (isMenuOpen = !isMenuOpen)}>
-						{#if isMenuOpen}
-							<X />
-						{:else}
-							<Menu />
-						{/if}
-					</Button>
-				</li>
+				{#if links}
+					<li class="md:hidden">
+						<Button variant="ghost" size="icon" onclick={() => (isMenuOpen = !isMenuOpen)}>
+							{#if isMenuOpen}
+								<X />
+							{:else}
+								<Menu />
+							{/if}
+						</Button>
+					</li>
+				{/if}
 				<li>
 					<Button
 						href="/"
@@ -58,7 +60,7 @@
 		</div>
 	</div>
 
-	{#if isMenuOpen}
+	{#if isMenuOpen && links}
 		<div transition:slide class="flex flex-col gap-2 border-b bg-background p-4 md:hidden">
 			{#each links as link (link.name)}
 				<Button

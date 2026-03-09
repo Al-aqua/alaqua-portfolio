@@ -4,7 +4,7 @@
 	import Navbar from '$lib/components/navbar.svelte';
 </script>
 
-<Navbar links={[]} />
+<Navbar />
 
 <section class="flex min-h-screen w-full flex-col items-center justify-center gap-2" id="blog">
 	<CircleOff class="h-12 w-12" />

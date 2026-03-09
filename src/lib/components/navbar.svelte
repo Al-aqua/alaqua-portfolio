@@ -23,7 +23,7 @@
 					<Terminal /> Al-aqua
 				</Button>
 			</li>
-			<div class="flex gap-8">
+			<div class="flex gap-2">
 				{#each links as link (link.name)}
 					<li>
 						<Button

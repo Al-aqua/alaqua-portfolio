@@ -13,7 +13,7 @@
 				<Button
 					href="/"
 					class="text-md font-family-heading transition-all"
-					variant="default"
+					variant="outline"
 					role="link"
 					aria-label="Home - Al-aqua portfolio"
 				>

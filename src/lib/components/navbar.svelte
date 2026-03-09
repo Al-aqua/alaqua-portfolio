@@ -15,7 +15,7 @@
 			<li>
 				<Button
 					href="/"
-					class="text-md font-family-heading transition-all"
+					class="text-md font-family-heading transition-all hover:text-foreground"
 					variant="outline"
 					role="link"
 					aria-label="Home - Al-aqua portfolio"

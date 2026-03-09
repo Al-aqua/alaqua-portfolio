@@ -7,7 +7,6 @@
 	import SvelteSeo from 'svelte-seo';
 	import { cn } from '$lib/utils';
 	import GridPattern from '$lib/components/GridPattern.svelte';
-	import Navbar from '$lib/components/navbar.svelte';
 
 	let { children } = $props();
 </script>
@@ -63,8 +62,6 @@
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
 <ModeWatcher />
-
-<Navbar />
 
 <div class="relative min-h-screen w-full">
 	<GridPattern

@@ -1,8 +1,16 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button/index.js';
 	import ScrollButton from './scrollButton.svelte';
+	import Navbar from './navbar.svelte';
+	import type { NavItem } from '$lib/types';
+	const links: NavItem[] = [
+		{ name: 'Behind the Code', href: '#behind-the-code', ariaLabel: 'Behind the Code section' },
+		{ name: 'Get in touch', href: '#get-in-touch', ariaLabel: 'Get in touch section' },
+		{ name: 'Blog', href: '/blog', ariaLabel: 'Blog section' }
+	];
 </script>
 
+<Navbar {links} />
 <section
 	class="flex min-h-svh flex-col items-center justify-between px-16 py-28 md:px-28 md:py-48"
 	aria-label="Hero section"
@@ -15,16 +23,8 @@
 			I craft full-stack solutions that are as easy to maintain as they are to explain.
 		</p>
 		<div class="mt-6 flex gap-4">
-			<Button
-				href="#get-in-touch"
-				class="text-md transition-all hover:-translate-y-0.5 active:scale-98"
-				variant="default">Get in touch</Button
-			>
-			<Button
-				href="/blog"
-				class="text-md transition-all hover:-translate-y-0.5 active:scale-98"
-				variant="secondary">Read my blog</Button
-			>
+			<Button href="#get-in-touch" class="text-md" variant="default">Get in touch</Button>
+			<Button href="/blog" class="text-md" variant="secondary">Read my blog</Button>
 		</div>
 	</div>
 

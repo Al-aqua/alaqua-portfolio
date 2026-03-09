@@ -3,7 +3,10 @@
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { Terminal } from '@lucide/svelte';
 	import type { NavItem } from '$lib/types';
-	export let links: NavItem[];
+	interface props {
+		links: NavItem[];
+	}
+	let { links }: props = $props();
 </script>
 
 <nav class="fixed z-50 h-16 w-full bg-background">

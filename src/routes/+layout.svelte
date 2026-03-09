@@ -7,8 +7,15 @@
 	import SvelteSeo from 'svelte-seo';
 	import { cn } from '$lib/utils';
 	import GridPattern from '$lib/components/GridPattern.svelte';
+	import { fly } from 'svelte/transition';
+	import type { Snippet } from 'svelte';
+	import type { LayoutData } from './$types';
+	interface props {
+		children: Snippet;
+		data: LayoutData;
+	}
 
-	let { children } = $props();
+	let { children, data }: props = $props();
 </script>
 
 <SvelteSeo
@@ -62,14 +69,19 @@
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
 <ModeWatcher />
-
-<div class="relative min-h-screen w-full">
-	<GridPattern
-		class={cn('bg-foreground,transparent)]', 'inset-x-0 inset-y-[-30%] skew-y-12')}
-		fillColor="rgb(156 163 175 / 0.15)"
-	/>
-	{@render children()}
-</div>
+{#key data.url}
+	<div
+		class="relative min-h-screen w-full"
+		in:fly={{ x: -100, duration: 500, delay: 100 }}
+		out:fly={{ x: 100, duration: 300 }}
+	>
+		<GridPattern
+			class={cn('bg-foreground,transparent)]', 'inset-x-0 inset-y-[-30%] skew-y-12')}
+			fillColor="rgb(156 163 175 / 0.15)"
+		/>
+		{@render children()}
+	</div>
+{/key}
 <div style="display:none">
 	{#each locales as locale (locale)}
 		<a href={localizeHref(page.url.pathname, { locale })}>

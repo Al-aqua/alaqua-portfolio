@@ -10,17 +10,17 @@
 >
 	<div class="flex w-full max-w-4xl flex-col gap-8">
 		<div class="flex items-baseline gap-1">
-			<h2 class="pb-2 text-3xl font-bold sm:text-4xl md:text-5xl">
-				<BlurFade>Get in Touch</BlurFade>
-			</h2>
+			<BlurFade>
+				<h2 class="pb-2 text-3xl font-bold sm:text-4xl md:text-5xl">Get in Touch</h2>
+			</BlurFade>
 		</div>
 
-		<p class="text-lg sm:text-xl md:text-2xl">
-			<BlurFade>
+		<BlurFade>
+			<p class="text-lg sm:text-xl md:text-2xl">
 				Have a project in mind? Need a security audit? Want to collaborate on something interesting?
 				Let's talk.
-			</BlurFade>
-		</p>
+			</p>
+		</BlurFade>
 
 		<div class="flex flex-col gap-4 text-lg sm:text-xl">
 			<BlurFade>

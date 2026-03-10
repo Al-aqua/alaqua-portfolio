@@ -4,21 +4,27 @@
 	import { Terminal, Menu, X } from '@lucide/svelte';
 	import { slide } from 'svelte/transition';
 	import type { NavItem } from '$lib/types';
+
 	interface props {
 		links?: NavItem[];
 	}
-	let { links }: props = $props();
+	let { links = [] }: props = $props();
 
 	let isMenuOpen = $state(false);
 </script>
 
 <nav class="fixed z-50 h-16 w-full border-b bg-background">
 	<div class="flex h-full w-full items-center justify-between p-4 md:justify-around">
-		<ul class="flex gap-8 md:gap-28">
-			<div class="flex items-center gap-2">
-				{#if links}
+		<div class="flex gap-8 md:gap-28">
+			<ul class="flex items-center gap-2">
+				{#if links.length > 0}
 					<li class="md:hidden">
-						<Button variant="ghost" size="icon" onclick={() => (isMenuOpen = !isMenuOpen)}>
+						<Button
+							variant="ghost"
+							size="icon"
+							onclick={() => (isMenuOpen = !isMenuOpen)}
+							aria-label="Menu"
+						>
 							{#if isMenuOpen}
 								<X />
 							{:else}
@@ -38,8 +44,9 @@
 						<Terminal /> Al-aqua
 					</Button>
 				</li>
-			</div>
-			<div class="hidden gap-2 md:flex">
+			</ul>
+
+			<ul class="hidden gap-2 md:flex">
 				{#each links as link (link.name)}
 					<li>
 						<Button
@@ -53,26 +60,29 @@
 						</Button>
 					</li>
 				{/each}
-			</div>
-		</ul>
+			</ul>
+		</div>
+
 		<div>
 			<ThemeToggle />
 		</div>
 	</div>
 
-	{#if isMenuOpen && links}
-		<div transition:slide class="flex flex-col gap-2 border-b bg-background p-4 md:hidden">
+	{#if isMenuOpen && links.length > 0}
+		<ul transition:slide class="flex flex-col gap-2 border-b bg-background p-4 md:hidden">
 			{#each links as link (link.name)}
-				<Button
-					href={link.href}
-					variant="ghost"
-					class="w-fit justify-start"
-					role="link"
-					onclick={() => (isMenuOpen = false)}
-				>
-					{link.name}
-				</Button>
+				<li>
+					<Button
+						href={link.href}
+						variant="ghost"
+						class="w-full justify-start"
+						role="link"
+						onclick={() => (isMenuOpen = false)}
+					>
+						{link.name}
+					</Button>
+				</li>
 			{/each}
-		</div>
+		</ul>
 	{/if}
 </nav>

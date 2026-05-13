@@ -1,38 +1,36 @@
-ARG BUN_VERSION=1.3.11
+FROM node:22-alpine AS builder
 
-# Build stage
-FROM oven/bun:${BUN_VERSION} AS builder
+RUN npm install -g pnpm
 
 WORKDIR /app
 
-COPY package.json bun.lockb* ./
-
-RUN bun install --frozen-lockfile
+COPY package.json pnpm-lock.yaml svelte.config.js tsconfig.json vite.config.ts .npmrc ./
+RUN pnpm install --frozen-lockfile --ignore-scripts
+RUN pnpm exec svelte-kit sync || true
 
 COPY . .
 
 ENV NODE_ENV=production
-RUN bun run build
+RUN pnpm run build
 
-# Production stage
-FROM oven/bun:${BUN_VERSION}-slim AS runner
+FROM node:22-alpine AS runner
 
-RUN apt-get update && apt-get install -y --no-install-recommends wget && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache wget
 
 WORKDIR /app
 
 COPY --from=builder /app/build ./build
 COPY --from=builder /app/package.json ./
+COPY --from=builder /app/node_modules ./node_modules
 
 ENV NODE_ENV=production
 ENV PORT=3000
 
 EXPOSE 3000
 
-USER bun
+USER node
 
-# Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD wget -qO- http://localhost:3000/health >/dev/null || exit 1
 
-CMD ["bun", "./build/index.js"]
+CMD ["node", "./build/index.js"]

@@ -1,4 +1,6 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"hello_world": "Hello, {name} from ar!"
+	"navbar_behind_the_code": "وراء الكود",
+	"navbar_get_in_touch": "تواصل معي",
+	"navbar_blog": "المدونة"
 }

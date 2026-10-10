@@ -2,5 +2,10 @@
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 	"navbar_behind_the_code": "Behind the Code",
 	"navbar_get_in_touch": "Get in touch",
-	"navbar_blog": "Blog"
+	"navbar_blog": "Blog",
+	"hero_title": "Mohammad Al-aqua",
+	"hero_subtitle": "Teacher by day, coder by night.",
+	"hero_description": "I craft full-stack solutions that are as easy to maintain as they are to explain.",
+	"hero_get_in_touch": "Get in touch",
+	"hero_read_blog": "Read my blog"
 }

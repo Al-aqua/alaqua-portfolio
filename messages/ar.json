@@ -2,5 +2,10 @@
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 	"navbar_behind_the_code": "وراء الكود",
 	"navbar_get_in_touch": "تواصل معي",
-	"navbar_blog": "المدونة"
+	"navbar_blog": "المدونة",
+	"hero_title": "محمد الاكوع",
+	"hero_subtitle": "معلم بالنهار، ومبرمج بالليل.",
+	"hero_description": "أقوم بابتكار حلول برمجية متكاملة (Full-stack) سهلة الصيانة تمامًا كما هي سهلة الشرح.",
+	"hero_get_in_touch": "تواصل معي",
+	"hero_read_blog": "اقرأ مدونتي"
 }

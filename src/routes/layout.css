@@ -130,9 +130,6 @@
 	html {
 		@apply font-sans;
 	}
-	:lang(ar) {
-		line-height: 1.85;
-	}
 	h1,
 	h2,
 	h3,
@@ -141,4 +138,20 @@
 	h6 {
 		@apply font-heading;
 	}
+}
+
+/*
+ * Arabic script has taller glyphs and diacritics, so it needs looser leading
+ * than the Latin-tuned Tailwind defaults.
+ *
+ * These rules intentionally live OUTSIDE `@layer base`: unlayered declarations
+ * take precedence over Tailwind's `@layer utilities` (e.g. `text-5xl`,
+ * `leading-tight`), which is why the old in-layer rule was being ignored.
+ */
+:lang(ar) {
+	line-height: 1.85;
+}
+
+:lang(ar) :is(h1, h2, h3, h4, h5, h6) {
+	line-height: 1.5;
 }

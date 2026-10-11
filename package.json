@@ -52,6 +52,7 @@
 	},
 	"dependencies": {
 		"gsap": "^3.15.0",
-		"mode-watcher": "^1.1.0"
+		"mode-watcher": "^1.1.0",
+		"svelte-inview": "^4.0.4"
 	}
 }

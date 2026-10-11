@@ -12,6 +12,9 @@ RUN pnpm install --frozen-lockfile
 
 COPY . .
 
+ARG PUBLIC_OPENPANEL_CLIENT_ID
+ENV PUBLIC_OPENPANEL_CLIENT_ID=$PUBLIC_OPENPANEL_CLIENT_ID
+
 RUN pnpm build
 
 FROM nginx:stable AS runner

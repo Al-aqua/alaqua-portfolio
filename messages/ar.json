@@ -7,5 +7,8 @@
 	"hero_subtitle": "معلم بالنهار، ومبرمج بالليل.",
 	"hero_description": "أقوم بابتكار حلول برمجية متكاملة (Full-stack) سهلة الصيانة تمامًا كما هي سهلة الشرح.",
 	"hero_get_in_touch": "تواصل معي",
-	"hero_read_blog": "اقرأ مدونتي"
+	"hero_read_blog": "اقرأ مدونتي",
+	"blog_empty_title": "لا توجد مقالات بعد",
+	"blog_empty_description": "ما زلت أكتب. تحقق مرة أخرى قريبًا.",
+	"blog_back_home": "العودة إلى الرئيسية"
 }

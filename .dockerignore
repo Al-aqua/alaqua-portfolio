@@ -1,0 +1,16 @@
+Dockerfile
+.dockerignore
+.git
+.gitignore
+.gitattributes
+.github
+.vscode
+.opencode
+README.md
+node_modules
+build
+.svelte-kit
+project.inlang/cache
+*.log
+.env
+.env.*

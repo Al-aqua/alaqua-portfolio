@@ -71,7 +71,7 @@
 		</div>
 		<div>
 			<ThemeToggle />
-			<LocalToggle />
+			<!-- <LocalToggle /> -->
 		</div>
 	</div>
 	{#if isMenuOpen}

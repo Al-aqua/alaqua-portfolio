@@ -157,7 +157,6 @@
 		};
 
 		const onTouchMove = (e: TouchEvent) => {
-			e.preventDefault();
 			userActive = true;
 			if (idleTimer) clearTimeout(idleTimer);
 			const rect = scene.getBoundingClientRect();
@@ -232,7 +231,7 @@
 		scene.addEventListener('pointermove', onPointerMove);
 		scene.addEventListener('pointerleave', onPointerLeave);
 		scene.addEventListener('click', onClick);
-		scene.addEventListener('touchmove', onTouchMove, { passive: false });
+		scene.addEventListener('touchmove', onTouchMove, { passive: true });
 		scene.addEventListener('touchstart', onTouchStart, { passive: true });
 		scene.addEventListener('touchend', onTouchEnd, { passive: true });
 
@@ -291,7 +290,7 @@
 </script>
 
 <div class={cn('relative aspect-square w-1/2 max-md:w-11/12', className)} style={wrapStyleParts}>
-	<div bind:this={scene} class="grid h-full w-full" style={sceneStyle}>
+	<div bind:this={scene} class="grid h-full w-full touch-pan-y" style={sceneStyle}>
 		{#each cells as _r, r (r)}
 			{#each cells as _c, c (c)}
 				<div

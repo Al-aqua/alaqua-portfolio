@@ -51,6 +51,7 @@
 		"#lib/*": "./src/lib/*"
 	},
 	"dependencies": {
+		"gsap": "^3.15.0",
 		"mode-watcher": "^1.1.0"
 	}
 }

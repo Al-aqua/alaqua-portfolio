@@ -13,5 +13,10 @@
 	"blog_back_home": "العودة إلى الرئيسية",
 	"footer_tagline": "أبني برمجيات آمنة وسهلة الصيانة.",
 	"footer_nav_label": "التذييل",
-	"footer_rights": "جميع الحقوق محفوظة."
+	"footer_rights": "جميع الحقوق محفوظة.",
+	"error_not_found_title": "الصفحة غير موجودة",
+	"error_not_found_description": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+	"error_title": "حدث خطأ ما",
+	"error_description": "حدث خطأ غير متوقع. حاول مرة أخرى.",
+	"error_back_home": "العودة إلى الرئيسية"
 }

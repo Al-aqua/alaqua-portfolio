@@ -13,5 +13,10 @@
 	"blog_back_home": "Back home",
 	"footer_tagline": "Building secure, maintainable software.",
 	"footer_nav_label": "Footer",
-	"footer_rights": "All rights reserved."
+	"footer_rights": "All rights reserved.",
+	"error_not_found_title": "Page not found",
+	"error_not_found_description": "The page you're looking for doesn't exist or has been moved.",
+	"error_title": "Something went wrong",
+	"error_description": "An unexpected error occurred. Please try again.",
+	"error_back_home": "Back home"
 }

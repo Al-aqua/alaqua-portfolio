@@ -1,5 +1,5 @@
 export interface NavItem {
-    name: string;
-    href: string;
-    ariaLabel?: string;
+	name: string;
+	href: string;
+	ariaLabel?: string;
 }

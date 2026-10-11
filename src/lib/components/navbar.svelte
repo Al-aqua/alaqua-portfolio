@@ -10,10 +10,10 @@
 	let links: NavItem[] = [
 		{
 			name: m.navbar_behind_the_code(),
-			href: '#behind-the-code',
+			href: '/#behind-the-code',
 			ariaLabel: 'Behind the Code section'
 		},
-		{ name: m.navbar_get_in_touch(), href: '#get-in-touch', ariaLabel: 'Get in touch section' },
+		{ name: m.navbar_get_in_touch(), href: '/#get-in-touch', ariaLabel: 'Get in touch section' },
 		{ name: m.navbar_blog(), href: '/blog', ariaLabel: 'Blog section' }
 	];
 	let isMenuOpen = $state(false);

@@ -1,13 +1,36 @@
 <script lang="ts">
+	import { mode } from 'mode-watcher';
 	import BoxReveal from './box_reveal.svelte';
+	import CursorGrid from './cursor_grid.svelte';
+
+	const isDark = $derived(mode.current === 'dark');
 </script>
 
 <section
 	id="behind-the-code"
 	aria-label="Behind the Code section"
-	class="flex min-h-svh flex-col justify-between px-8 py-28 md:px-16 lg:px-28 lg:py-48"
+	class="relative isolate flex min-h-svh flex-col justify-between overflow-hidden px-8 py-28 md:px-16 lg:px-28 lg:py-48"
 >
-	<div class="max-w-5xl">
+	<div class="absolute inset-0 z-0" aria-hidden="true">
+		<CursorGrid
+			cellSize={64}
+			color={isDark ? '#A1A1AA' : '#3F3F46'}
+			radius={160}
+			falloff="smooth"
+			lineWidth={1}
+			maxOpacity={0.7}
+			fillOpacity={0.12}
+			cellRadius={8}
+			gridOpacity={isDark ? 0.07 : 0.06}
+		/>
+	</div>
+
+	<div
+		class="pointer-events-none absolute inset-0 z-5 bg-linear-to-b from-background via-background/85 to-background/0 md:bg-linear-to-r md:rtl:bg-linear-to-l"
+		aria-hidden="true"
+	></div>
+
+	<div class="relative z-10 max-w-5xl">
 		<BoxReveal boxColor="var(--primary)" duration={0.3}>
 			<h2 class="pb-2 text-3xl font-bold sm:text-4xl md:text-5xl">Behind the Code</h2>
 		</BoxReveal>

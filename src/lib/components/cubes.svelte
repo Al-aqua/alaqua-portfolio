@@ -58,7 +58,7 @@
 				: '5%'
 	);
 
-	function tiltAt(rowCenter: number, colCenter: number) {
+	function tiltAt(rowCenter: number, colCenter: number, reduced = false) {
 		if (!scene) return;
 		scene.querySelectorAll<HTMLDivElement>('.cube').forEach((cube) => {
 			const r = +cube.dataset.row!;
@@ -67,13 +67,19 @@
 			if (dist <= radius) {
 				const pct = 1 - dist / radius;
 				const angle = pct * maxAngle;
-				gsap.to(cube, {
-					duration: duration.enter,
-					ease: easing,
-					overwrite: true,
-					rotateX: -angle,
-					rotateY: angle
-				});
+				if (reduced) {
+					gsap.set(cube, { rotateX: -angle, rotateY: angle });
+				} else {
+					gsap.to(cube, {
+						duration: duration.enter,
+						ease: easing,
+						overwrite: true,
+						rotateX: -angle,
+						rotateY: angle
+					});
+				}
+			} else if (reduced) {
+				gsap.set(cube, { rotateX: 0, rotateY: 0 });
 			} else {
 				gsap.to(cube, {
 					duration: duration.leave,
@@ -86,8 +92,15 @@
 		});
 	}
 
-	function resetAll() {
+	function resetAll(reduced = false) {
 		if (!scene) return;
+		if (reduced) {
+			gsap.set(scene.querySelectorAll<HTMLDivElement>('.cube'), {
+				rotateX: 0,
+				rotateY: 0
+			});
+			return;
+		}
 		scene.querySelectorAll<HTMLDivElement>('.cube').forEach((cube) =>
 			gsap.to(cube, {
 				duration: duration.leave,
@@ -104,6 +117,31 @@
 		let idleTimer: ReturnType<typeof setTimeout> | null = null;
 		let userActive = false;
 		let simRAF: number | null = null;
+		let reduced = false;
+
+		function startAuto() {
+			if (!autoAnimate || simRAF !== null) return;
+			let pos = { x: Math.random() * gridSize, y: Math.random() * gridSize };
+			let tgt = { x: Math.random() * gridSize, y: Math.random() * gridSize };
+			const speed = 0.02;
+			const loop = () => {
+				if (!userActive) {
+					pos.x += (tgt.x - pos.x) * speed;
+					pos.y += (tgt.y - pos.y) * speed;
+					tiltAt(pos.y, pos.x);
+					if (Math.hypot(pos.x - tgt.x, pos.y - tgt.y) < 0.1) {
+						tgt = { x: Math.random() * gridSize, y: Math.random() * gridSize };
+					}
+				}
+				simRAF = requestAnimationFrame(loop);
+			};
+			simRAF = requestAnimationFrame(loop);
+		}
+
+		function stopAuto() {
+			if (simRAF !== null) cancelAnimationFrame(simRAF);
+			simRAF = null;
+		}
 
 		const onPointerMove = (e: PointerEvent) => {
 			userActive = true;
@@ -114,7 +152,7 @@
 			const colCenter = (e.clientX - rect.left) / cellW;
 			const rowCenter = (e.clientY - rect.top) / cellH;
 			if (raf) cancelAnimationFrame(raf);
-			raf = requestAnimationFrame(() => tiltAt(rowCenter, colCenter));
+			raf = requestAnimationFrame(() => tiltAt(rowCenter, colCenter, reduced));
 			idleTimer = setTimeout(() => (userActive = false), 3000);
 		};
 
@@ -129,17 +167,18 @@
 			const colCenter = (t.clientX - rect.left) / cellW;
 			const rowCenter = (t.clientY - rect.top) / cellH;
 			if (raf) cancelAnimationFrame(raf);
-			raf = requestAnimationFrame(() => tiltAt(rowCenter, colCenter));
+			raf = requestAnimationFrame(() => tiltAt(rowCenter, colCenter, reduced));
 			idleTimer = setTimeout(() => (userActive = false), 3000);
 		};
 
 		const onTouchStart = () => {
 			userActive = true;
 		};
-		const onTouchEnd = () => resetAll();
+		const onTouchEnd = () => resetAll(reduced);
+		const onPointerLeave = () => resetAll(reduced);
 
 		const onClick = (e: MouseEvent | TouchEvent) => {
-			if (!rippleOnClick || !scene) return;
+			if (!rippleOnClick || reduced || !scene) return;
 			const rect = scene.getBoundingClientRect();
 			const cellW = rect.width / gridSize;
 			const cellH = rect.height / gridSize;
@@ -191,40 +230,45 @@
 		};
 
 		scene.addEventListener('pointermove', onPointerMove);
-		scene.addEventListener('pointerleave', resetAll);
+		scene.addEventListener('pointerleave', onPointerLeave);
 		scene.addEventListener('click', onClick);
 		scene.addEventListener('touchmove', onTouchMove, { passive: false });
 		scene.addEventListener('touchstart', onTouchStart, { passive: true });
 		scene.addEventListener('touchend', onTouchEnd, { passive: true });
 
-		if (autoAnimate) {
-			let pos = { x: Math.random() * gridSize, y: Math.random() * gridSize };
-			let tgt = { x: Math.random() * gridSize, y: Math.random() * gridSize };
-			const speed = 0.02;
-			const loop = () => {
-				if (!userActive) {
-					pos.x += (tgt.x - pos.x) * speed;
-					pos.y += (tgt.y - pos.y) * speed;
-					tiltAt(pos.y, pos.x);
-					if (Math.hypot(pos.x - tgt.x, pos.y - tgt.y) < 0.1) {
-						tgt = { x: Math.random() * gridSize, y: Math.random() * gridSize };
-					}
-				}
-				simRAF = requestAnimationFrame(loop);
+		// Respect reduced-motion: no ambient motion or click ripple, tilt stays instant.
+		const mm = gsap.matchMedia();
+
+		mm.add('(prefers-reduced-motion: reduce)', () => {
+			reduced = true;
+			stopAuto();
+			resetAll(true);
+
+			return () => {
+				reduced = false;
 			};
-			simRAF = requestAnimationFrame(loop);
-		}
+		});
+
+		mm.add('(prefers-reduced-motion: no-preference)', () => {
+			reduced = false;
+			startAuto();
+
+			return () => {
+				stopAuto();
+			};
+		});
 
 		return () => {
 			scene.removeEventListener('pointermove', onPointerMove);
-			scene.removeEventListener('pointerleave', resetAll);
+			scene.removeEventListener('pointerleave', onPointerLeave);
 			scene.removeEventListener('click', onClick);
 			scene.removeEventListener('touchmove', onTouchMove);
 			scene.removeEventListener('touchstart', onTouchStart);
 			scene.removeEventListener('touchend', onTouchEnd);
 			if (raf) cancelAnimationFrame(raf);
-			if (simRAF) cancelAnimationFrame(simRAF);
+			stopAuto();
 			if (idleTimer) clearTimeout(idleTimer);
+			mm.revert();
 		};
 	});
 

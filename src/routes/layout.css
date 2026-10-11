@@ -119,6 +119,9 @@
 	--radius-3xl: calc(var(--radius) * 2.2);
 	--radius-4xl: calc(var(--radius) * 2.6);
 }
+html {
+	scroll-behavior: smooth;
+}
 
 @layer base {
 	* {

@@ -10,5 +10,8 @@
 	"hero_read_blog": "Read my blog",
 	"blog_empty_title": "No posts yet",
 	"blog_empty_description": "I'm still writing. Check back soon.",
-	"blog_back_home": "Back home"
+	"blog_back_home": "Back home",
+	"footer_tagline": "Building secure, maintainable software.",
+	"footer_nav_label": "Footer",
+	"footer_rights": "All rights reserved."
 }

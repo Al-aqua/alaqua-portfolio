@@ -7,6 +7,7 @@
 	import favicon from '#lib/assets/favicon.svg';
 	import type { LayoutProps } from './$types';
 	import Navbar from '#lib/components/navbar.svelte';
+	import Footer from '#lib/components/footer.svelte';
 	import { ModeWatcher } from 'mode-watcher';
 
 	let { children }: LayoutProps = $props();
@@ -21,6 +22,8 @@
 <Navbar />
 
 {@render children()}
+
+<Footer />
 
 <div style="display:none">
 	{#each locales as locale (locale)}
